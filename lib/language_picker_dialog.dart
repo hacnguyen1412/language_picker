@@ -77,6 +77,8 @@ class LanguagePickerDialog extends StatefulWidget {
 
   /// List of languages available in this picker.
   final List<Language>? languages;
+  final Color backgroundColor;
+  final Color textColor;
 
   LanguagePickerDialog({
     Key? key,
@@ -95,6 +97,8 @@ class LanguagePickerDialog extends StatefulWidget {
     this.searchCursorColor,
     this.searchEmptyView,
     this.languages,
+    required this.backgroundColor,
+    required this.textColor,
   }) : super(key: key);
 
   @override
@@ -123,6 +127,7 @@ class SingleChoiceDialogState extends State<LanguagePickerDialog> {
       content: _buildContent(context),
       isDividerEnabled: widget.isDividerEnabled,
       divider: widget.divider,
+      backgroundColor: widget.backgroundColor,
     );
   }
 
@@ -170,6 +175,8 @@ class SingleChoiceDialogState extends State<LanguagePickerDialog> {
 
   _buildSearchField() {
     return TextField(
+      autofocus: true,
+      style: TextStyle(color: widget.textColor),
       cursorColor: widget.searchCursorColor,
       decoration:
           widget.searchInputDecoration ?? InputDecoration(hintText: 'Search'),
